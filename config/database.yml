@@ -79,8 +79,15 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# production:
+#   <<: *default
+#   database: blog_production
+#   username: blog
+#   password: <%= ENV['BLOG_DATABASE_PASSWORD'] %>
 production:
   <<: *default
-  database: blog_production
-  username: blog
-  password: <%= ENV['BLOG_DATABASE_PASSWORD'] %>
+  host: <%= ENV['AZURE_DB_HOST'] %>
+  port: 5432
+  database: <%= ENV['AZURE_DB_DATABASE'] %>
+  username: <%= ENV['AZURE_DB_USERNAME'] %>
+  password: <%= ENV['AZURE_DB_PASSWORD'] %>
